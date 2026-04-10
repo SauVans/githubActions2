@@ -2,7 +2,7 @@ name: Receiver Workflow
 
 on:
   repository_dispatch:
-  types: [githubActions-release-published]
+    types: [githubActions-release-published]
 
 permissions: write-all
 
@@ -11,4 +11,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Log event payload
-        run: echo "Received event payload: ${{ toJson(github.event) }}"
+        run: |
+          echo 'Received event payload: ${{ toJson(github.event) }}'
