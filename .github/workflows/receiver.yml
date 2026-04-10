@@ -12,4 +12,4 @@ jobs:
     steps:
       - name: Log event payload
         run: |
-          echo 'Received event payload: ${{ toJson(github.event) }}'
+          echo 'Received event payload: ${{ github.event.client_payload.release_version }}'
