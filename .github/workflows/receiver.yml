@@ -12,4 +12,9 @@ jobs:
     steps:
       - name: Log event payload
         run: |
-          echo 'Received event payload: ${{ github.event.client_payload.ort_release_branch }}'
+          if [ github.event_name == 'githubActions-release-published' ]; then
+            VERSION=${{ github.event.client_payload.ort_release_version }}
+          else
+            VERSION=${{ github.event.client_payload.githubActions.version }}
+          fi
+          echo 'Received event payload: ${VERSION}'
